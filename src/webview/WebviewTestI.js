@@ -21,17 +21,22 @@ function WebviewTestI(){
 
     const graphData = {
         nodes: [
-          { id: 1, label: 'Node 1' },
-          { id: 2, label: 'Node 2' },
+          { id: "1", label: "Node 1", size: 15, color: "green" },
+          { id: "2", label: "Node 2", size: 20, color: "blue" },
+          { id: "3", label: "Node 3", size: 25, color: "red" },
         ],
         edges: [
-          { from: 1, to: 2 },
+          { from: "1", to: "2", size: 2, color: "gray" },
+          { from: "2", to: "3", size: 3, color: "black" },
         ],
       };
-      const sendDataToWebView = () => {
+
+    const sendDataToWebView = () => {
         const dataString = JSON.stringify(graphData);
-        ref.current.postMessage(dataString);
-      };
+        if (ref.current) {
+            ref.current.postMessage(dataString);
+        }
+    };
 
     return(
         <View style={styles.container}>
@@ -43,17 +48,17 @@ function WebviewTestI(){
                     ref={ref}
                     originWhitelist={['*']}
                     source={require('./grafo.html')}
+                    allowFileAccess={true} // Permite acesso a arquivos locais
+                    allowUniversalAccessFromFileURLs={true} 
                     javaScriptEnabled={true}
                     onMessage={(event) => {
                         console.log('Mensagem do WebView:', event.nativeEvent.data);
                     }}
                     onLoad={() => {
-                        const graphData = JSON.stringify(graphData);
-                        ref.current.postMessage(graphData);
+                        sendDataToWebView();
                       }}
                     style={{ width: screenWidth, height: screenHeight }}
                 />
-                <Button title="Enviar Dados para WebView" onPress={sendDataToWebView} />
                 </SafeAreaView>
             </View>
         </View>
