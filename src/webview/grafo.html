@@ -18,9 +18,13 @@
                     alert('Os dados do grafo ainda não foram carregados!');
                     return;
                 }
+
+                const container = document.getElementById('container');
+                container.innerHTML = ''; // Remove qualquer conteúdo existente
     
                 // Criar o grafo usando graphology
                 const graph = new graphology.Graph();
+
     
                 // Adicionar nós ao grafo
                 graphData.nodes.forEach((node, index) => {
@@ -42,7 +46,6 @@
                 });
     
                 // Instanciar o Sigma.js e renderizar o grafo
-                const container = document.getElementById('container');
                 const sigmaInstance = new Sigma(graph, container);
             }
         </script>
