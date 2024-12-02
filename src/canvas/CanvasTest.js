@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Dimensions, SafeAreaView, StyleSheet, View } from "react-native";
 import Canvas from "react-native-canvas";
 
-function Tresd() {
+function CanvasTest() {
     const ref = useRef(null);
     const [mouseX, setMouseX] = useState(10);
     const [mouseY, setMouseY] = useState(10);
@@ -58,7 +58,7 @@ function Tresd() {
     );
 }
 
-export default Tresd;
+export default CanvasTest;
 
 const styles = StyleSheet.create({
     container: {

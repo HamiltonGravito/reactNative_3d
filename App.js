@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Tresd from './src/Tresd';
+import CanvasTest from './src/canvas/CanvasTest';
+import WebviewTestI from './src/webview/WebviewTestI';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Tresd />
+      {/* <CanvasTest /> */}
+      <WebviewTestI />
     </View>
   );
 }
